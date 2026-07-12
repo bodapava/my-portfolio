@@ -345,8 +345,6 @@ function ArtifactsTab() {
   );
 }
 
-// ---------- Small reusable pieces ----------
-
 function EntryLabel({ num, title }) {
   return (
     <div className="pf-entry-label">
