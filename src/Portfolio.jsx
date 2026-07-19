@@ -29,8 +29,8 @@ const profile = {
   resumeUrl: `${import.meta.env.BASE_URL}Priyanka_Bodapati_Resume.pdf`,
   photoUrl: `${import.meta.env.BASE_URL}profile.jpg`,
   links: {
-    github: "#", // TODO: add your GitHub profile URL
-    linkedin: "#", // TODO: add your LinkedIn profile URL
+    github: "https://github.com/bodapava", // TODO: add your GitHub profile URL
+    linkedin: "https://www.linkedin.com/in/priyanka-bodapati-94945a261", // TODO: add your LinkedIn profile URL
   },
 };
 
@@ -161,7 +161,7 @@ const mlVsDl = {
   intro:
     "Deep learning isn't a separate technology from machine learning — it's a subset of it. Every deep learning system is a machine learning system, but most machine learning systems aren't deep learning. The question worth asking on any real project isn't \"which one is smarter,\" it's \"which one fits my data, my budget, and my need to explain the answer.\"",
   plain: {
-    ml: 'Machine Learning (ML): software that finds patterns in data using statistical methods (like decision trees, linear regression, or random forests) instead of being explicitly programmed with rules. A person still tells it which features of the data to look at.',
+    ml: "Machine Learning (ML): software that finds patterns in data using statistical methods (like decision trees, linear regression, or random forests) instead of being explicitly programmed with rules. A person still tells it which features of the data to look at.",
     dl: 'Deep Learning (DL): a type of ML built from layered "neural networks" loosely inspired by the brain. Instead of a person picking out the important features, the network discovers them itself directly from raw data — pixels, audio waves, or words.',
   },
   comparisons: [
@@ -188,7 +188,7 @@ const mlVsDl = {
     {
       aspect: "Explainability",
       ml: "Easier to explain why it made a decision — you can point to the features that mattered.",
-      dl: "Harder to interpret — often described as a \"black box.\"",
+      dl: 'Harder to interpret — often described as a "black box."',
     },
     {
       aspect: "Best suited for",
