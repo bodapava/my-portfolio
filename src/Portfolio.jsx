@@ -157,6 +157,73 @@ const discussionPost = {
 The takeaway I keep coming back to: today's AI boom will only last as long as it keeps solving real problems, not just generating hype. If I had to guess the next entry on this timeline, my bet isn't a "smarter" model — it's AI becoming reliable enough to be trusted with real responsibility, doing tasks correctly on its own instead of just answering questions well.`,
 };
 
+const mlVsDl = {
+  intro:
+    "Deep learning isn't a separate technology from machine learning — it's a subset of it. Every deep learning system is a machine learning system, but most machine learning systems aren't deep learning. The question worth asking on any real project isn't \"which one is smarter,\" it's \"which one fits my data, my budget, and my need to explain the answer.\"",
+  plain: {
+    ml: 'Machine Learning (ML): software that finds patterns in data using statistical methods (like decision trees, linear regression, or random forests) instead of being explicitly programmed with rules. A person still tells it which features of the data to look at.',
+    dl: 'Deep Learning (DL): a type of ML built from layered "neural networks" loosely inspired by the brain. Instead of a person picking out the important features, the network discovers them itself directly from raw data — pixels, audio waves, or words.',
+  },
+  comparisons: [
+    {
+      aspect: "How it learns",
+      ml: "Learns from features a person selects and prepares ahead of time.",
+      dl: "Learns its own features straight from raw data, layer by layer.",
+    },
+    {
+      aspect: "Data needed",
+      ml: "Works well with small to medium datasets — hundreds to tens of thousands of rows.",
+      dl: "Needs large datasets, often hundreds of thousands to millions of examples, to perform well.",
+    },
+    {
+      aspect: "Hardware",
+      ml: "Trains fine on a normal laptop or CPU.",
+      dl: "Usually needs a GPU (or cluster of them) to train in a reasonable amount of time.",
+    },
+    {
+      aspect: "Training time",
+      ml: "Minutes to a few hours.",
+      dl: "Hours to weeks, depending on model and data size.",
+    },
+    {
+      aspect: "Explainability",
+      ml: "Easier to explain why it made a decision — you can point to the features that mattered.",
+      dl: "Harder to interpret — often described as a \"black box.\"",
+    },
+    {
+      aspect: "Best suited for",
+      ml: "Structured, tabular data: spreadsheets, transaction logs, form fields.",
+      dl: "Unstructured data: images, video, audio, and natural language.",
+    },
+  ],
+  whenToUse: {
+    ml: [
+      "Your dataset is small or medium sized",
+      "You need to explain a decision to a regulator, auditor, or customer",
+      "You need cheap, fast training and predictions on ordinary hardware",
+      "The problem is structured/tabular — rows and columns, not pixels or sound",
+    ],
+    dl: [
+      "You have a large volume of raw, unstructured data to learn from",
+      "Hand-crafting features would be impractical or impossible",
+      "You have access to GPUs and can tolerate longer training times",
+      "The task involves recognizing complex patterns humans can't easily write as rules",
+    ],
+  },
+  caseStudies: [
+    {
+      tag: "Machine Learning",
+      title: "Email Spam Filtering",
+      body: "Most spam filters are built on classic ML algorithms like Naive Bayes or logistic regression, not deep neural networks. Each email is turned into a handful of well-understood features — word frequency, sender reputation, presence of links, excessive capitalization — and a lightweight model classifies it as spam or not. This is a good ML fit because the signals are well known, the dataset needed is modest, and the filter has to run instantly across billions of inboxes on cheap hardware. A large neural network would cost far more to run and train for barely any accuracy gain.",
+    },
+    {
+      tag: "Deep Learning",
+      title: "Tesla Autopilot & Full Self-Driving",
+      body: "Tesla's driving system relies on deep learning — convolutional and transformer-based neural networks — to process raw video from eight cameras in real time. It has to recognize pedestrians, lane lines, traffic lights, and other vehicles across a nearly infinite range of lighting, weather, and road conditions, something no one could hand-code as explicit rules. Tesla trains these networks on billions of miles of real driving footage from its fleet, using massive GPU clusters. That combination — huge raw data, unstructured input, and patterns too complex to describe by hand — is exactly the kind of problem deep learning was built for.",
+    },
+  ],
+};
+
 // ---------- 2. COMPONENT ----------
 
 export default function Portfolio() {
@@ -338,6 +405,72 @@ function ArtifactsTab() {
             <p className="pf-post-body" key={i}>
               {para}
             </p>
+          ))}
+        </div>
+
+        <div className="pf-artifact-divider" />
+
+        <EntryLabel num="A2" title="Machine Learning vs. Deep Learning" />
+        <p className="pf-artifacts-intro">{mlVsDl.intro}</p>
+
+        <div className="pf-plain-grid">
+          <div className="pf-plain-card">
+            <span className="pf-tag-pill">Machine Learning</span>
+            <p className="pf-plain-text">{mlVsDl.plain.ml}</p>
+          </div>
+          <div className="pf-plain-card">
+            <span className="pf-tag-pill">Deep Learning</span>
+            <p className="pf-plain-text">{mlVsDl.plain.dl}</p>
+          </div>
+        </div>
+
+        <div className="pf-table-scroll">
+          <table className="pf-ml-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Machine Learning</th>
+                <th>Deep Learning</th>
+              </tr>
+            </thead>
+            <tbody>
+              {mlVsDl.comparisons.map((row) => (
+                <tr key={row.aspect}>
+                  <td className="pf-ml-aspect">{row.aspect}</td>
+                  <td>{row.ml}</td>
+                  <td>{row.dl}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="pf-when-grid">
+          <div className="pf-when-card">
+            <div className="pf-when-title">Choose Machine Learning when…</div>
+            <ul className="pf-highlights">
+              {mlVsDl.whenToUse.ml.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="pf-when-card">
+            <div className="pf-when-title">Choose Deep Learning when…</div>
+            <ul className="pf-highlights">
+              {mlVsDl.whenToUse.dl.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="pf-case-grid">
+          {mlVsDl.caseStudies.map((study) => (
+            <div className="pf-case-card" key={study.title}>
+              <span className="pf-tag-pill">{study.tag}</span>
+              <h4 className="pf-case-title">{study.title}</h4>
+              <p className="pf-case-body">{study.body}</p>
+            </div>
           ))}
         </div>
       </div>
