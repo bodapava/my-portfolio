@@ -224,6 +224,98 @@ const mlVsDl = {
   ],
 };
 
+const neuralNet = {
+  coreIdea:
+    "A neural network learns the way you do — not from hard-coded rules, but from repetition. You didn't memorize a checklist to recognize your best friend's face; you just saw it enough times, from enough angles, that your brain built its own rules. A neural network does the same thing, just with numbers instead of instinct.",
+  neuronIntro:
+    "Every network is built from one repeated block: the artificial neuron. It takes in numbers, multiplies each by a \"weight\" for how much it matters, adds them up, and decides whether to fire. Here's that same decision, playing out over pizza toppings instead of pixels — drag the sliders and watch.",
+  activationIntro:
+    "The neuron above uses the simplest rule there is: cross a threshold, fire — otherwise stay quiet. That rule is called an activation function, the \"switch\" that turns a weighted sum into an output. A hard on/off switch is easy to picture but bad for learning, since a tiny weight change almost never flips it. Real networks lean on smoother switches instead:",
+  activationTypes: [
+    {
+      name: "Step Function",
+      desc: "Outputs a flat 1 past a threshold, 0 below it — what the neuron above uses. Simple, but too rigid for real training.",
+      example: "A wall light switch: fully on or off, nothing in between.",
+    },
+    {
+      name: "Sigmoid",
+      desc: "Squashes any input into a smooth 0–1 curve, so a neuron can express \"a little confident\" instead of a flat yes or no.",
+      example: "A spam filter reporting \"87% likely spam\" instead of a flat yes/no.",
+    },
+    {
+      name: "Tanh",
+      desc: "The same S-curve as sigmoid, but ranges from -1 to 1 — letting a neuron express a negative signal, not just a weak positive one.",
+      example: "Sentiment scoring that ranges from clearly negative to clearly positive.",
+    },
+    {
+      name: "ReLU (Rectified Linear Unit)",
+      desc: "Passes positive numbers through untouched, flattens negatives to zero. Cheap and fast, which is why most hidden layers default to it.",
+      example: "The hidden layers behind most photo filters, like Instagram and Snapchat effects.",
+    },
+    {
+      name: "Softmax",
+      desc: "Used only in the output layer — converts raw scores into probabilities that add up to 100%, so the network can pick its best guess.",
+      example: "How ChatGPT picks its next word, or a photo app decides cat vs. dog vs. fox.",
+    },
+  ],
+  chainIntro:
+    "One neuron only makes a single yes/no call. Real power comes from chaining thousands of them into layers — the \"chain of thought\" that turns raw pixels into \"that's a cat.\" Think of a factory line: the first layer spots crude patterns, like edges. The next combines those into shapes — an ear, an eye. Later layers combine shapes into faces. By the last layer, it's not looking at pixels anymore — it's confidently saying \"cat.\"",
+  trainingIntro:
+    "A new network starts with random weights, so its first guesses are close to nonsense. It gets smart through a repeating training loop — try, get told how wrong, adjust, try again. Click through the steps:",
+  trainingSteps: [
+    {
+      title: "1. Forward Pass",
+      desc: "The network pushes one example — say, a photo — through every layer to produce a guess, like \"72% cat.\"",
+    },
+    {
+      title: "2. Compute the Loss",
+      desc: "A \"loss function\" compares the guess to the real answer and boils the error into one number — lower is better.",
+    },
+    {
+      title: "3. Backpropagation",
+      desc: "The network works backward through each layer, calculating how much every weight contributed to the error.",
+    },
+    {
+      title: "4. Update the Weights",
+      desc: "Each weight gets nudged toward the value that would have reduced the error — a method called gradient descent.",
+    },
+    {
+      title: "5. Repeat — Thousands of Times",
+      desc: "Steps 1–4 run again on the next example, then the next — often millions of times — until guesses stop improving.",
+    },
+  ],
+  types: [
+    {
+      tag: "The Basic One",
+      name: "Feedforward Neural Network",
+      desc: "Information flows one direction, input to output, with no loops or memory — the simplest architecture, and the one diagrammed above.",
+      example:
+        "Bank credit-scoring models that predict loan default risk from a customer's income, debt, and payment history.",
+    },
+    {
+      tag: "Sees Images",
+      name: "Convolutional Neural Network (CNN)",
+      desc: "Scans small patches of an image at a time, so it can spot a shape no matter where it appears in the picture.",
+      example: "The face filters on Instagram and Snapchat, and radiology tools that flag possible tumors in an X-ray.",
+    },
+    {
+      tag: "Remembers Sequences",
+      name: "Recurrent Neural Network (RNN / LSTM)",
+      desc: "Carries memory from one step to the next, so earlier inputs in a sequence shape how later ones are understood.",
+      example:
+        "The autocomplete that predicts your next word while texting, or models that forecast tomorrow's stock price from the last 30 days.",
+    },
+    {
+      tag: "Reads Everything at Once",
+      name: "Transformer",
+      desc: "Reads an entire sequence at once, using \"attention\" to weigh which earlier words matter most to the word it's currently working on.",
+      example: "ChatGPT, Google Translate, and virtually every modern large language model.",
+    },
+  ],
+  blackBox:
+    "Here's the catch: once trained, a network's \"knowledge\" is smeared across millions of numeric weights that no human can read line by line. Nobody can point to one weight and say \"this is why it called that a cat.\" That's the black box problem — deep learning trades interpretability for accuracy.\n\nIt's not just academic. A bank using a network to reject a loan, or a hospital using one to flag a scan, often can't fully explain the call to a regulator or a patient. That gap is exactly why explainable AI (XAI) has become its own field — an attempt to pry the box open, at least a little.",
+};
+
 // ---------- 2. COMPONENT ----------
 
 export default function Portfolio() {
@@ -363,26 +455,114 @@ function HomeTab() {
   );
 }
 
+const artifactsMeta = [
+  {
+    id: "timeline",
+    num: "A1",
+    title: "AI & ML Timeline",
+    tags: ["Data Visualization", "AI History"],
+    summary:
+      "A visual walk through 75 years of artificial intelligence — the breakthroughs, and the two \"winters\" where the field nearly stalled out.",
+  },
+  {
+    id: "mlvsdl",
+    num: "A2",
+    title: "Machine Learning vs. Deep Learning",
+    tags: ["Machine Learning", "Deep Learning"],
+    summary:
+      "A side-by-side comparison of ML and DL — how each learns, what it needs to work well, and which real-world problems it's actually built for.",
+  },
+  {
+    id: "neuralnet",
+    num: "A3",
+    title: "Neural Networks Explained",
+    tags: ["Deep Learning", "Interactive"],
+    summary:
+      "How machines learn patterns the way humans do — broken into simple building blocks, with an interactive neuron you can play with yourself.",
+  },
+];
+
 function ArtifactsTab() {
+  const [selected, setSelected] = useState(null);
+
+  if (selected === "timeline") return <TimelineArtifact onBack={() => setSelected(null)} />;
+  if (selected === "mlvsdl") return <MlVsDlArtifact onBack={() => setSelected(null)} />;
+  if (selected === "neuralnet") return <NeuralNetworkArtifact onBack={() => setSelected(null)} />;
+
   return (
     <section id="artifacts" className="pf-artifacts-section">
       <div className="pf-wrap">
+        <div className="pf-entry-label">
+          <span className="pf-entry-title">Artifacts</span>
+          <span className="pf-entry-line" />
+        </div>
+        <p className="pf-artifacts-intro">
+          A collection of write-ups from my AI &amp; ML coursework. Pick one below to read the full piece.
+        </p>
+
+        <div className="pf-artifact-list">
+          {artifactsMeta.map((a) => (
+            <div className="pf-artifact-card" key={a.id}>
+              <div className="pf-artifact-card-head">
+                <span className="pf-entry-num">{a.num}</span>
+                <h3 className="pf-artifact-card-title">{a.title}</h3>
+              </div>
+              <p className="pf-artifact-summary">{a.summary}</p>
+              <div className="pf-artifact-meta">
+                {a.tags.map((t) => (
+                  <span className="pf-tag-pill" key={t}>
+                    {t}
+                  </span>
+                ))}
+              </div>
+              <button className="pf-btn pf-btn-primary" onClick={() => setSelected(a.id)}>
+                View Artifact →
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BackButton({ onBack }) {
+  return (
+    <button className="pf-back-btn" onClick={onBack}>
+      ← Back to Artifacts
+    </button>
+  );
+}
+
+function TimelineArtifact({ onBack }) {
+  return (
+    <section id="artifacts" className="pf-artifacts-section">
+      <div className="pf-wrap">
+        <BackButton onBack={onBack} />
         <EntryLabel num="A1" title="AI & ML Timeline" />
         <p className="pf-artifacts-intro">
           A visual walk through 75 years of artificial intelligence — the breakthroughs, and the two "winters" where the
           field nearly stalled out.
         </p>
 
-        <div className="pf-timeline-scroll">
-          {timeline.map((t) => (
-            <div className="pf-tl-item" key={t.year}>
-              <div className="pf-tl-year">{t.year}</div>
-              <div>
-                <span className={`pf-tl-dot pf-dot-${t.kind}`} />
-                <span className="pf-tl-title">{t.title}</span>
+        <div className="pf-timeline-flow">
+          {timeline.map((t, i) => (
+            <React.Fragment key={t.year}>
+              <div className={`pf-tl-node pf-tl-node-${t.kind}`}>
+                <div className="pf-tl-node-head">
+                  <span className={`pf-tl-dot pf-dot-${t.kind}`} />
+                  <span className="pf-tl-year">{t.year}</span>
+                  <span className="pf-tl-title">{t.title}</span>
+                </div>
+                <div className="pf-tl-desc">{t.desc}</div>
               </div>
-              <div className="pf-tl-desc">{t.desc}</div>
-            </div>
+              {i < timeline.length - 1 && (
+                <div className="pf-tl-connector">
+                  <span className="pf-tl-connector-line" />
+                  <span className="pf-tl-connector-arrow" />
+                </div>
+              )}
+            </React.Fragment>
           ))}
         </div>
 
@@ -407,9 +587,16 @@ function ArtifactsTab() {
             </p>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
 
-        <div className="pf-artifact-divider" />
-
+function MlVsDlArtifact({ onBack }) {
+  return (
+    <section id="artifacts" className="pf-artifacts-section">
+      <div className="pf-wrap">
+        <BackButton onBack={onBack} />
         <EntryLabel num="A2" title="Machine Learning vs. Deep Learning" />
         <p className="pf-artifacts-intro">{mlVsDl.intro}</p>
 
@@ -475,6 +662,215 @@ function ArtifactsTab() {
         </div>
       </div>
     </section>
+  );
+}
+
+function NeuralNetworkArtifact({ onBack }) {
+  return (
+    <section id="artifacts" className="pf-artifacts-section">
+      <div className="pf-wrap">
+        <BackButton onBack={onBack} />
+        <EntryLabel num="A3" title="Neural Networks Explained" />
+        <p className="pf-artifact-subtitle">How Machines Learn Patterns Like Humans</p>
+
+        <p className="pf-artifacts-intro">{neuralNet.coreIdea}</p>
+
+        <div className="pf-nn-block">
+          <h3 className="pf-nn-subhead">The Artificial Neuron</h3>
+          <p className="pf-artifacts-intro">{neuralNet.neuronIntro}</p>
+          <NeuronDemo />
+        </div>
+
+        <div className="pf-nn-block">
+          <h3 className="pf-nn-subhead">The Activation Function: the Neuron's Switch</h3>
+          <p className="pf-artifacts-intro">{neuralNet.activationIntro}</p>
+          <div className="pf-case-grid pf-activation-grid">
+            {neuralNet.activationTypes.map((a) => (
+              <div className="pf-case-card" key={a.name}>
+                <h4 className="pf-case-title">{a.name}</h4>
+                <p className="pf-case-body">{a.desc}</p>
+                <p className="pf-case-body pf-case-example">
+                  <b>Real world:</b> {a.example}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="pf-nn-block">
+          <h3 className="pf-nn-subhead">Chain of Thought: How Layers Connect</h3>
+          <p className="pf-artifacts-intro">{neuralNet.chainIntro}</p>
+          <div className="pf-chain-diagram">
+            <LayerDiagram layers={[3, 4, 4, 2]} />
+            <div className="pf-chain-labels">
+              <span>Input Layer</span>
+              <span>Hidden Layer</span>
+              <span>Hidden Layer</span>
+              <span>Output Layer</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="pf-nn-block">
+          <h3 className="pf-nn-subhead">The Training Loop</h3>
+          <p className="pf-artifacts-intro">{neuralNet.trainingIntro}</p>
+          <TrainingStepper steps={neuralNet.trainingSteps} />
+        </div>
+
+        <div className="pf-nn-block">
+          <h3 className="pf-nn-subhead">Types of Neural Networks</h3>
+          <div className="pf-case-grid">
+            {neuralNet.types.map((t) => (
+              <div className="pf-case-card" key={t.name}>
+                <span className="pf-tag-pill">{t.tag}</span>
+                <h4 className="pf-case-title">{t.name}</h4>
+                <p className="pf-case-body">{t.desc}</p>
+                <p className="pf-case-body pf-case-example">
+                  <b>Real world:</b> {t.example}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="pf-post">
+          <div className="pf-post-date">Limitation · Worth Knowing</div>
+          <h3 className="pf-post-title">The Black Box Problem</h3>
+          {neuralNet.blackBox.split("\n\n").map((para, i) => (
+            <p className="pf-post-body" key={i}>
+              {para}
+            </p>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function NeuronDemo() {
+  const [salt, setSalt] = useState(6);
+  const [cheese, setCheese] = useState(6);
+  const [pickiness, setPickiness] = useState(5);
+
+  const sum = salt * 0.6 + cheese * 0.8 - pickiness;
+  const fires = sum > 2;
+
+  return (
+    <div className="pf-neuron-demo">
+      <div className="pf-neuron-controls">
+        <label>
+          <span>
+            How salty do you like food? <b>{salt}/10</b>
+          </span>
+          <input type="range" min="0" max="10" value={salt} onChange={(e) => setSalt(Number(e.target.value))} />
+        </label>
+        <label>
+          <span>
+            How cheesy does the pizza need to be? <b>{cheese}/10</b>
+          </span>
+          <input type="range" min="0" max="10" value={cheese} onChange={(e) => setCheese(Number(e.target.value))} />
+        </label>
+        <label>
+          <span>
+            How picky are you feeling tonight? <b>{pickiness}/10</b>
+          </span>
+          <input
+            type="range"
+            min="0"
+            max="10"
+            value={pickiness}
+            onChange={(e) => setPickiness(Number(e.target.value))}
+          />
+        </label>
+      </div>
+
+      <div className="pf-neuron-visual">
+        <svg viewBox="0 0 320 140" className="pf-nn-svg" role="img" aria-label="Artificial neuron diagram">
+          <line x1="50" y1="35" x2="180" y2="70" className="pf-nn-edge" />
+          <line x1="50" y1="105" x2="180" y2="70" className="pf-nn-edge" />
+          <line x1="180" y1="70" x2="270" y2="70" className={`pf-nn-edge${fires ? " pf-nn-edge-active" : ""}`} />
+          <circle cx="50" cy="35" r="16" className="pf-nn-node pf-nn-node-in" />
+          <circle cx="50" cy="105" r="16" className="pf-nn-node pf-nn-node-in" />
+          <circle cx="180" cy="70" r="22" className={`pf-nn-node pf-nn-node-sum${fires ? " pf-nn-firing" : ""}`} />
+          <text x="180" y="75" textAnchor="middle" className="pf-nn-label">
+            Σ
+          </text>
+          <circle cx="270" cy="70" r="16" className={`pf-nn-node pf-nn-node-out${fires ? " pf-nn-firing" : ""}`} />
+        </svg>
+        <p className={`pf-neuron-result ${fires ? "pf-fires" : "pf-quiet"}`}>
+          {fires ? "🔥 Neuron fires — you'll love this pizza!" : "😐 Neuron stays quiet — not tonight."}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function LayerDiagram({ layers, width = 600, height = 240 }) {
+  const layerX = layers.map((_, i) => 50 + (i * (width - 100)) / (layers.length - 1));
+  const positions = layers.map((count, li) => {
+    const gap = height / (count + 1);
+    return Array.from({ length: count }, (_, ni) => ({ x: layerX[li], y: gap * (ni + 1) }));
+  });
+
+  return (
+    <svg viewBox={`0 0 ${width} ${height}`} className="pf-nn-svg" role="img" aria-label="Neural network layer diagram">
+      {positions.slice(0, -1).map((layerPos, li) =>
+        layerPos.map((p1, i1) =>
+          positions[li + 1].map((p2, i2) => (
+            <line key={`e-${li}-${i1}-${i2}`} x1={p1.x} y1={p1.y} x2={p2.x} y2={p2.y} className="pf-nn-edge" />
+          ))
+        )
+      )}
+      {positions.map((layerPos, li) =>
+        layerPos.map((p, i) => (
+          <circle
+            key={`n-${li}-${i}`}
+            cx={p.x}
+            cy={p.y}
+            r={13}
+            className={`pf-nn-node ${
+              li === 0 ? "pf-nn-node-in" : li === positions.length - 1 ? "pf-nn-node-out" : "pf-nn-node-hidden"
+            }`}
+          />
+        ))
+      )}
+    </svg>
+  );
+}
+
+function TrainingStepper({ steps }) {
+  const [step, setStep] = useState(0);
+  const total = steps.length;
+
+  return (
+    <div className="pf-stepper">
+      <div className="pf-stepper-dots">
+        {steps.map((s, i) => (
+          <button
+            key={s.title}
+            className={`pf-stepper-dot${i === step ? " active" : ""}`}
+            onClick={() => setStep(i)}
+            aria-label={s.title}>
+            {i + 1}
+          </button>
+        ))}
+      </div>
+      <div className="pf-stepper-card">
+        <div className="pf-stepper-title">{steps[step].title}</div>
+        <p className="pf-stepper-desc">{steps[step].desc}</p>
+      </div>
+      <div className="pf-stepper-nav">
+        <button className="pf-btn" onClick={() => setStep((step - 1 + total) % total)}>
+          ← Prev
+        </button>
+        <span className="pf-stepper-count">
+          {step + 1} / {total}
+        </span>
+        <button className="pf-btn pf-btn-primary" onClick={() => setStep((step + 1) % total)}>
+          {step === total - 1 ? "↺ Loop back to Step 1" : "Next →"}
+        </button>
+      </div>
+    </div>
   );
 }
 
