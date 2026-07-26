@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Portfolio.css";
 
 /*
@@ -321,6 +321,10 @@ const neuralNet = {
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState("home");
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [activeTab]);
+
   return (
     <div className="pf">
       <nav className="pf-nav">
@@ -484,6 +488,10 @@ const artifactsMeta = [
 
 function ArtifactsTab() {
   const [selected, setSelected] = useState(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [selected]);
 
   if (selected === "timeline") return <TimelineArtifact onBack={() => setSelected(null)} />;
   if (selected === "mlvsdl") return <MlVsDlArtifact onBack={() => setSelected(null)} />;
