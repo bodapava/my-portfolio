@@ -34,7 +34,7 @@ const profile = {
   },
 };
 
-const languages = ["Java", "Python", "JavaScript", "React", "Angular", "Java", "Node", "GraphQl", "Postgres", "SQL"];
+const languages = ["Java", "Python", "JavaScript", "React", "Angular", "TypeScript", "Node", "GraphQl", "Postgres", "SQL"];
 
 const experience = [
   {
@@ -316,6 +316,53 @@ const neuralNet = {
     "Here's the catch: once trained, a network's \"knowledge\" is smeared across millions of numeric weights that no human can read line by line. Nobody can point to one weight and say \"this is why it called that a cat.\" That's the black box problem — deep learning trades interpretability for accuracy.\n\nIt's not just academic. A bank using a network to reject a loan, or a hospital using one to flag a scan, often can't fully explain the call to a regulator or a patient. That gap is exactly why explainable AI (XAI) has become its own field — an attempt to pry the box open, at least a little.",
 };
 
+const dataQuality = {
+  hook:
+    "Imagine a hiring algorithm confidently rejecting a qualified candidate — not because of anything wrong with them, but because it learned from ten years of biased hiring decisions and simply repeated the pattern. Or a fraud detection system that misses the exact fraud it was built to catch, because fraud is rare and the model barely saw any examples of it during training.\n\nNeither of these is a story about bad AI. They're stories about bad data.",
+  intro:
+    'Everyone loves talking about algorithms, neural networks, and the next big model — but the real hero (or villain) of every AI system is something far less glamorous: the data feeding it. As a software developer, I\'ve learned that no amount of clever code fixes a shaky foundation. In AI, data is the foundation. It\'s an old saying, but it still holds up: garbage in, garbage out. A model doesn\'t know anything except what it\'s shown.',
+  pillars: [
+    { name: "Accurate", desc: "Reflects reality — not typos, glitches, or outdated records." },
+    { name: "Complete", desc: "No silent gaps quietly skewing the picture." },
+    { name: "Consistent", desc: '"NY" and "New York" treated as the same thing, not two.' },
+    { name: "Timely", desc: "Current enough that the model isn't learning yesterday's world." },
+  ],
+  challenges: [
+    {
+      tag: "Bias",
+      title: "Bias Baked In",
+      body: "Historical data often reflects historical unfairness, and models happily learn to repeat it — a hiring model trained on years of skewed decisions will keep making them.",
+    },
+    {
+      tag: "Imbalance",
+      title: "Rare Events Get Ignored",
+      body: "Fraud, defects, failures — the exact things we most want to catch are usually the most underrepresented cases in the data.",
+    },
+    {
+      tag: "Labeling",
+      title: "Messy Labels",
+      body: "Someone (or something) has to label the data for supervised learning, and human judgment slips into every label.",
+    },
+    {
+      tag: "Privacy",
+      title: "The Privacy Tightrope",
+      body: "More data usually means a better model — but also more responsibility to the people that data represents.",
+    },
+    {
+      tag: "Drift",
+      title: "Data Goes Stale",
+      body: "The world changes, and data quietly stops matching it, dragging model performance down with no obvious warning sign.",
+    },
+  ],
+  bigData: [
+    { letter: "V", name: "Volume", desc: "Massive amounts of data arriving from everywhere — logs, sensors, transactions, clicks." },
+    { letter: "V", name: "Velocity", desc: "Data moving fast enough that pipelines have to clean and validate it in real time, not overnight." },
+    { letter: "V", name: "Variety", desc: "Structured tables, raw text, images, and audio — all needing to be handled differently." },
+  ],
+  closing:
+    'This isn\'t just a technical detail buried in a data pipeline — it\'s a leadership issue. The best moment to ask "where did this data come from, and who\'s missing from it?" is before a model ships, not after it\'s already made an unfair or wrong call that affects real people.\n\nBecause in the end, the smartest model in the world is only as trustworthy as the data it was never allowed to question.',
+};
+
 // ---------- 2. COMPONENT ----------
 
 export default function Portfolio() {
@@ -484,6 +531,14 @@ const artifactsMeta = [
     summary:
       "How machines learn patterns the way humans do — broken into simple building blocks, with an interactive neuron you can play with yourself.",
   },
+  {
+    id: "dataquality",
+    num: "A4",
+    title: "Data Quality & Big Data in AI/ML",
+    tags: ["Data Quality", "Big Data"],
+    summary:
+      "Why the unglamorous work of clean, fair data matters more than any algorithm — with an interactive demo of how messy data wrecks a model.",
+  },
 ];
 
 function ArtifactsTab() {
@@ -496,6 +551,7 @@ function ArtifactsTab() {
   if (selected === "timeline") return <TimelineArtifact onBack={() => setSelected(null)} />;
   if (selected === "mlvsdl") return <MlVsDlArtifact onBack={() => setSelected(null)} />;
   if (selected === "neuralnet") return <NeuralNetworkArtifact onBack={() => setSelected(null)} />;
+  if (selected === "dataquality") return <DataQualityArtifact onBack={() => setSelected(null)} />;
 
   return (
     <section id="artifacts" className="pf-artifacts-section">
@@ -877,6 +933,117 @@ function TrainingStepper({ steps }) {
         <button className="pf-btn pf-btn-primary" onClick={() => setStep((step + 1) % total)}>
           {step === total - 1 ? "↺ Loop back to Step 1" : "Next →"}
         </button>
+      </div>
+    </div>
+  );
+}
+
+function DataQualityArtifact({ onBack }) {
+  return (
+    <section id="artifacts" className="pf-artifacts-section">
+      <div className="pf-wrap">
+        <BackButton onBack={onBack} />
+        <EntryLabel num="A4" title="Data Quality & Big Data in AI/ML" />
+        <p className="pf-artifact-subtitle">The Silent Ingredient Behind Every AI Success (and Failure)</p>
+
+        {dataQuality.hook.split("\n\n").map((para, i) => (
+          <p className="pf-artifacts-intro" key={i}>
+            {para}
+          </p>
+        ))}
+        <p className="pf-artifacts-intro">{dataQuality.intro}</p>
+
+        <div className="pf-nn-block">
+          <h3 className="pf-nn-subhead">What Makes Data "Good," Anyway?</h3>
+          <div className="pf-plain-grid">
+            {dataQuality.pillars.map((p) => (
+              <div className="pf-plain-card" key={p.name}>
+                <span className="pf-tag-pill">{p.name}</span>
+                <p className="pf-plain-text">{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="pf-nn-block">
+          <h3 className="pf-nn-subhead">Try It: How Messy Data Wrecks a Model</h3>
+          <p className="pf-artifacts-intro">
+            Drag the slider to see, roughly, how a model's real-world accuracy degrades as more messy, biased, or
+            outdated data creeps into its training set.
+          </p>
+          <DataQualityDemo />
+        </div>
+
+        <div className="pf-nn-block">
+          <h3 className="pf-nn-subhead">The Traps Hiding in the Data</h3>
+          <div className="pf-case-grid">
+            {dataQuality.challenges.map((c) => (
+              <div className="pf-case-card" key={c.title}>
+                <span className="pf-tag-pill">{c.tag}</span>
+                <h4 className="pf-case-title">{c.title}</h4>
+                <p className="pf-case-body">{c.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="pf-nn-block">
+          <h3 className="pf-nn-subhead">"Big Data" Isn't Automatically Smart Data</h3>
+          <p className="pf-artifacts-intro">
+            Big data sounds impressive, but scale alone solves nothing. The real challenge is the classic three V's:
+          </p>
+          <div className="pf-case-grid">
+            {dataQuality.bigData.map((v) => (
+              <div className="pf-case-card pf-dq-vcard" key={v.name}>
+                <div className="pf-dq-vletter">{v.letter}</div>
+                <h4 className="pf-case-title">{v.name}</h4>
+                <p className="pf-case-body">{v.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="pf-post">
+          <div className="pf-post-date">Leadership Takeaway</div>
+          <h3 className="pf-post-title">Why Leaders Should Care as Much as Engineers Do</h3>
+          {dataQuality.closing.split("\n\n").map((para, i) => (
+            <p className="pf-post-body" key={i}>
+              {para}
+            </p>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function DataQualityDemo() {
+  const [messy, setMessy] = useState(20);
+  const accuracy = Math.max(20, Math.round(96 - messy * 0.65));
+  const tier = accuracy >= 80 ? "good" : accuracy >= 60 ? "ok" : accuracy >= 40 ? "warn" : "bad";
+  const messages = {
+    good: "🟢 Rock solid — the model performs close to its true potential.",
+    ok: "🟡 Cracks are showing — accuracy is taking a real hit.",
+    warn: "🟠 Getting risky — the model starts making unreliable calls.",
+    bad: "🔴 Garbage in, garbage out — this model can't be trusted with real decisions.",
+  };
+
+  return (
+    <div className="pf-neuron-demo">
+      <div className="pf-neuron-controls">
+        <label>
+          <span>
+            % of messy, biased, or outdated data in the training set <b>{messy}%</b>
+          </span>
+          <input type="range" min="0" max="100" value={messy} onChange={(e) => setMessy(Number(e.target.value))} />
+        </label>
+      </div>
+      <div className="pf-neuron-visual">
+        <div className="pf-dq-bar">
+          <div className={`pf-dq-fill pf-dq-fill-${tier}`} style={{ width: `${accuracy}%` }} />
+        </div>
+        <p className="pf-dq-accuracy">{accuracy}% real-world accuracy</p>
+        <p className="pf-neuron-result">{messages[tier]}</p>
       </div>
     </div>
   );

@@ -330,6 +330,27 @@
 .pf-footer-links a{ text-decoration:none; color: var(--ink-dim); transition: color .2s; }
 .pf-footer-links a:hover{ color: var(--amber); }
 
+/* DATA QUALITY ARTIFACT (A4) */
+.pf-dq-bar{
+  width: 100%; max-width: 420px; height: 14px; border-radius: 20px; margin: 0 auto;
+  background: var(--line); overflow: hidden; border: 1px solid var(--line);
+}
+.pf-dq-fill{ height: 100%; border-radius: 20px; transition: width .25s ease, background .25s ease; }
+.pf-dq-fill-good{ background: var(--sage); }
+.pf-dq-fill-ok{ background: var(--amber); }
+.pf-dq-fill-warn{ background: #c2762f; }
+.pf-dq-fill-bad{ background: #a3402e; }
+.pf-dq-accuracy{
+  margin-top: 14px; font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.04em; color: var(--ink-dim);
+}
+.pf-dq-vcard{ text-align: center; }
+.pf-dq-vletter{
+  width: 44px; height: 44px; margin: 0 auto 12px; border-radius: 50%;
+  display:flex; align-items:center; justify-content:center;
+  background: var(--bg); border: 2px solid var(--amber); color: var(--amber);
+  font-family: var(--serif); font-weight: 600; font-size: 1.2rem;
+}
+
 @media (max-width: 760px){
   .pf-hero-grid{ grid-template-columns: 1fr; }
   .pf-photo-wrap{ order: -1; }
