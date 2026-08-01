@@ -354,6 +354,8 @@ const dataQuality = {
       body: "The world changes, and data quietly stops matching it, dragging model performance down with no obvious warning sign.",
     },
   ],
+  bigDataDefinition:
+    "\"Big data\" isn't just \"a lot of data\" — it's a specific term for datasets so large, fast-moving, or varied that traditional spreadsheets, databases, and processing tools simply can't handle them anymore. Think less \"a big spreadsheet\" and more \"a constant, high-speed flood of information from thousands of sources at once\" — every click on a website, every sensor reading in a warehouse, every transaction at a bank, all arriving continuously and needing to be stored, processed, and made sense of.",
   bigData: [
     { letter: "V", name: "Volume", desc: "Massive amounts of data arriving from everywhere — logs, sensors, transactions, clicks." },
     { letter: "V", name: "Velocity", desc: "Data moving fast enough that pipelines have to clean and validate it in real time, not overnight." },
@@ -989,6 +991,7 @@ function DataQualityArtifact({ onBack }) {
 
         <div className="pf-nn-block">
           <h3 className="pf-nn-subhead">"Big Data" Isn't Automatically Smart Data</h3>
+          <p className="pf-artifacts-intro">{dataQuality.bigDataDefinition}</p>
           <p className="pf-artifacts-intro">
             Big data sounds impressive, but scale alone solves nothing. The real challenge is the classic three V's:
           </p>
