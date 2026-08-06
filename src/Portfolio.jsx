@@ -157,6 +157,39 @@ const discussionPost = {
 The takeaway I keep coming back to: today's AI boom will only last as long as it keeps solving real problems, not just generating hype. If I had to guess the next entry on this timeline, my bet isn't a "smarter" model — it's AI becoming reliable enough to be trusted with real responsibility, doing tasks correctly on its own instead of just answering questions well.`,
 };
 
+const timelineInfo = {
+  objective:
+    "To visually map 75 years of AI/ML history — the breakthroughs and the two \"winters\" where the field nearly stalled — so viewers can see that progress here has never been a straight line, and draw a takeaway from that pattern.",
+  process:
+    "Researched key milestones from the 1950 Turing Test through the 2025 GenAI race, classified each as an origin/breakthrough, winter, or boom event, then built an interactive horizontal timeline in React to display them chronologically with a color-coded legend, closing with a personal reflection on what the pattern suggests about today's AI boom.",
+  uniqueValue:
+    "Rather than a static list of dates, the timeline is built to make a pattern visible — color-coding winters against booms so a viewer can see AI's boom/bust cycle for themselves instead of being told about it.",
+  relevance:
+    "Recognizing this cyclical pattern is directly useful for evaluating today's AI hype: it reframes \"is this wave different?\" as a pattern-recognition question grounded in history, which matters for technical and leadership decisions around AI adoption alike.",
+  references: [
+    {
+      text: "Turing, A. M. (1950). Computing Machinery and Intelligence. Mind, 49(236), 433–460.",
+      url: "https://courses.cs.umbc.edu/471/papers/turing.pdf",
+    },
+    {
+      text: "McCarthy, J., Minsky, M., Rochester, N., & Shannon, C. E. (1955). A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence.",
+      url: "https://www-formal.stanford.edu/jmc/history/dartmouth/dartmouth.html",
+    },
+    {
+      text: "Krizhevsky, A., Sutskever, I., & Hinton, G. E. (2012). ImageNet Classification with Deep Convolutional Neural Networks. Advances in Neural Information Processing Systems, 25.",
+      url: "https://proceedings.neurips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf",
+    },
+    {
+      text: "Google DeepMind. (n.d.). AlphaGo.",
+      url: "https://deepmind.google/research/alphago/",
+    },
+    {
+      text: "Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). Attention Is All You Need.",
+      url: "https://arxiv.org/abs/1706.03762",
+    },
+  ],
+};
+
 const mlVsDl = {
   intro:
     "Deep learning isn't a separate technology from machine learning — it's a subset of it. Every deep learning system is a machine learning system, but most machine learning systems aren't deep learning. The question worth asking on any real project isn't \"which one is smarter,\" it's \"which one fits my data, my budget, and my need to explain the answer.\"",
@@ -220,8 +253,36 @@ const mlVsDl = {
       tag: "Deep Learning",
       title: "Tesla Autopilot & Full Self-Driving",
       body: "Tesla's driving system relies on deep learning — convolutional and transformer-based neural networks — to process raw video from eight cameras in real time. It has to recognize pedestrians, lane lines, traffic lights, and other vehicles across a nearly infinite range of lighting, weather, and road conditions, something no one could hand-code as explicit rules. Tesla trains these networks on billions of miles of real driving footage from its fleet, using massive GPU clusters. That combination — huge raw data, unstructured input, and patterns too complex to describe by hand — is exactly the kind of problem deep learning was built for.",
+      source: "Tesla AI Day 2021; reporting via InsideEVs",
+      sourceUrl: "https://insideevs.com/news/396126/tesla-autopilot-neural-network-advancements/",
     },
   ],
+  professionalReflection:
+    "Choosing between ML and DL is never just a technical decision — in my own work at payments and financial services companies, it's just as much a leadership call. A more \"impressive\" deep learning model isn't automatically the right one: regulators and auditors often need to understand why a loan was denied or a transaction was flagged as fraud, which pushes teams toward simpler, more explainable ML models even when a neural network might squeeze out marginally better accuracy. There's also a real staffing and cost trade-off — deep learning usually means GPUs, MLOps infrastructure, and specialized skill sets that not every team has budget or headcount for. Recognizing that trade-off early, and being honest with stakeholders about it, is part of what separates a technically correct decision from a professionally sound one.",
+  info: {
+    objective:
+      "To give a practical, decision-oriented comparison between machine learning and deep learning — not just definitions, but a guide for when to actually choose one over the other on a real project.",
+    process:
+      "Built a comparison table across six dimensions (how it learns, data needed, hardware, training time, explainability, best-suited data type), paired it with \"when to choose\" checklists for each, and grounded the comparison in two real-world case studies — one classic ML use case and one deep learning use case — before closing with a professional reflection tying the decision to my own work in financial services.",
+    uniqueValue:
+      "Most ML vs. DL explainers stop at definitions. This artifact frames the choice as a practical trade-off — cost, explainability, data availability — rather than \"which is smarter,\" which is closer to how the decision actually gets made on a real team.",
+    relevance:
+      "In regulated industries like finance and payments — my own background — this choice is rarely just technical; auditors and regulators often require explainability, making this comparison directly applicable to deployment decisions I could actually face.",
+    references: [
+      {
+        text: "Google for Developers. (n.d.). Linear regression: Gradient descent. Machine Learning Crash Course.",
+        url: "https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent",
+      },
+      {
+        text: "Naive Bayes spam filtering. (n.d.). Wikipedia.",
+        url: "https://en.wikipedia.org/wiki/Naive_Bayes_spam_filtering",
+      },
+      {
+        text: "Tesla AI Day 2021; reporting via InsideEVs.",
+        url: "https://insideevs.com/news/396126/tesla-autopilot-neural-network-advancements/",
+      },
+    ],
+  },
 };
 
 const neuralNet = {
@@ -314,6 +375,26 @@ const neuralNet = {
   ],
   blackBox:
     "Here's the catch: once trained, a network's \"knowledge\" is smeared across millions of numeric weights that no human can read line by line. Nobody can point to one weight and say \"this is why it called that a cat.\" That's the black box problem — deep learning trades interpretability for accuracy.\n\nIt's not just academic. A bank using a network to reject a loan, or a hospital using one to flag a scan, often can't fully explain the call to a regulator or a patient. That gap is exactly why explainable AI (XAI) has become its own field — an attempt to pry the box open, at least a little.",
+  info: {
+    objective:
+      "To break down how neural networks actually learn — from a single neuron to a full training loop — into pieces simple enough to follow without oversimplifying the underlying mechanics.",
+    process:
+      "Structured the explanation as a sequence of building blocks (neuron → activation function → layered network → training loop → network types), and built two interactive elements — a draggable-slider neuron demo and a clickable training-loop stepper — so the concepts could be explored hands-on instead of only read.",
+    uniqueValue:
+      "The interactivity is the differentiator — letting someone adjust inputs and watch a neuron \"fire\" or stay quiet turns an abstract equation into something they can experiment with directly, which sticks better than a static diagram.",
+    relevance:
+      "Neural networks underlie nearly every modern AI system I'll work with professionally, from LLMs to fraud models. Being able to explain how they work in plain terms is directly useful for communicating with non-technical stakeholders in a leadership role.",
+    references: [
+      {
+        text: "Google for Developers. (n.d.). Neural networks: Training using backpropagation. Machine Learning Crash Course.",
+        url: "https://developers.google.com/machine-learning/crash-course/neural-networks/backpropagation",
+      },
+      {
+        text: "Rumelhart, D. E., Hinton, G. E., & Williams, R. J. (1986). Learning representations by back-propagating errors. Nature, 323, 533–536.",
+        url: "https://www.nature.com/articles/323533a0",
+      },
+    ],
+  },
 };
 
 const dataQuality = {
@@ -363,6 +444,26 @@ const dataQuality = {
   ],
   closing:
     'This isn\'t just a technical detail buried in a data pipeline — it\'s a leadership issue. The best moment to ask "where did this data come from, and who\'s missing from it?" is before a model ships, not after it\'s already made an unfair or wrong call that affects real people.\n\nBecause in the end, the smartest model in the world is only as trustworthy as the data it was never allowed to question.',
+  info: {
+    objective:
+      "To make the case that data quality — not algorithm choice — is usually the real determinant of whether an AI system succeeds or causes harm, and to make that abstract risk tangible.",
+    process:
+      "Opened with two concrete failure scenarios (biased hiring, missed fraud) to hook the reader, defined the pillars of \"good\" data, built an interactive slider demo showing how model accuracy degrades as messy data increases, catalogued five common data traps, and explained the \"3 V's\" of big data before closing with a leadership-focused takeaway.",
+    uniqueValue:
+      "The interactive demo turns a normally invisible problem — data quality — into a visible, quantified effect on accuracy in real time, which is more persuasive than describing it in the abstract.",
+    relevance:
+      "This is the artifact most directly tied to responsible AI leadership. Data quality failures like biased hiring models and missed fraud are real, documented risks in the financial services industry I work in, connecting this directly to decisions I could be responsible for.",
+    references: [
+      {
+        text: "Laney, D. (2001). 3D Data Management: Controlling Data Volume, Velocity, and Variety. META Group (Gartner).",
+        url: "http://blogs.gartner.com/doug-laney/files/2012/01/ad949-3D-Data-Management-Controlling-Data-Volume-Velocity-and-Variety.pdf",
+      },
+      {
+        text: "Google for Developers. (n.d.). Fairness: Types of bias. Machine Learning Crash Course.",
+        url: "https://developers.google.com/machine-learning/crash-course/fairness/types-of-bias",
+      },
+    ],
+  },
 };
 
 // ---------- 2. COMPONENT ----------
@@ -565,6 +666,10 @@ function ArtifactsTab() {
         <p className="pf-artifacts-intro">
           A collection of write-ups from my AI &amp; ML coursework. Pick one below to read the full piece.
         </p>
+        <p className="pf-artifacts-tools-note">
+          Built with React (hooks-driven interactive demos), inline SVG for diagrams, and custom CSS — deployed via
+          GitHub Pages.
+        </p>
 
         <div className="pf-artifact-list">
           {artifactsMeta.map((a) => (
@@ -600,6 +705,60 @@ function BackButton({ onBack }) {
   );
 }
 
+function DescriptionSection({ info }) {
+  return (
+    <div className="pf-nn-block">
+      <h3 className="pf-nn-subhead">Description</h3>
+      <div className="pf-case-grid">
+        <div className="pf-case-card">
+          <span className="pf-tag-pill">Objective</span>
+          <p className="pf-case-body">{info.objective}</p>
+        </div>
+        <div className="pf-case-card">
+          <span className="pf-tag-pill">Process</span>
+          <p className="pf-case-body">{info.process}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ValuePropositionSection({ info }) {
+  return (
+    <div className="pf-nn-block">
+      <h3 className="pf-nn-subhead">Value Proposition of the Artifact</h3>
+      <div className="pf-when-grid">
+        <div className="pf-when-card">
+          <div className="pf-when-title">Unique Value</div>
+          <p className="pf-plain-text">{info.uniqueValue}</p>
+        </div>
+        <div className="pf-when-card">
+          <div className="pf-when-title">Relevance</div>
+          <p className="pf-plain-text">{info.relevance}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ReferencesSection({ info }) {
+  return (
+    <div className="pf-nn-block">
+      <h3 className="pf-nn-subhead">References</h3>
+      <ul className="pf-references-list">
+        {info.references.map((r) => (
+          <li key={r.url}>
+            {r.text}{" "}
+            <a href={r.url} target="_blank" rel="noreferrer">
+              {r.url}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 function TimelineArtifact({ onBack }) {
   return (
     <section id="artifacts" className="pf-artifacts-section">
@@ -610,6 +769,8 @@ function TimelineArtifact({ onBack }) {
           A visual walk through 75 years of artificial intelligence — the breakthroughs, and the two "winters" where the
           field nearly stalled out.
         </p>
+
+        <DescriptionSection info={timelineInfo} />
 
         <div className="pf-timeline-flow">
           {timeline.map((t, i) => (
@@ -653,6 +814,9 @@ function TimelineArtifact({ onBack }) {
             </p>
           ))}
         </div>
+
+        <ValuePropositionSection info={timelineInfo} />
+        <ReferencesSection info={timelineInfo} />
       </div>
     </section>
   );
@@ -665,6 +829,8 @@ function MlVsDlArtifact({ onBack }) {
         <BackButton onBack={onBack} />
         <EntryLabel num="A2" title="Machine Learning vs. Deep Learning" />
         <p className="pf-artifacts-intro">{mlVsDl.intro}</p>
+
+        <DescriptionSection info={mlVsDl.info} />
 
         <div className="pf-plain-grid">
           <div className="pf-plain-card">
@@ -723,9 +889,26 @@ function MlVsDlArtifact({ onBack }) {
               <span className="pf-tag-pill">{study.tag}</span>
               <h4 className="pf-case-title">{study.title}</h4>
               <p className="pf-case-body">{study.body}</p>
+              {study.source && (
+                <p className="pf-case-source">
+                  Source:{" "}
+                  <a href={study.sourceUrl} target="_blank" rel="noreferrer">
+                    {study.source}
+                  </a>
+                </p>
+              )}
             </div>
           ))}
         </div>
+
+        <div className="pf-post">
+          <div className="pf-post-date">Reflection · Professional Implications</div>
+          <h3 className="pf-post-title">Model Selection Is a Leadership Decision, Not Just a Technical One</h3>
+          <p className="pf-post-body">{mlVsDl.professionalReflection}</p>
+        </div>
+
+        <ValuePropositionSection info={mlVsDl.info} />
+        <ReferencesSection info={mlVsDl.info} />
       </div>
     </section>
   );
@@ -740,6 +923,8 @@ function NeuralNetworkArtifact({ onBack }) {
         <p className="pf-artifact-subtitle">How Machines Learn Patterns Like Humans</p>
 
         <p className="pf-artifacts-intro">{neuralNet.coreIdea}</p>
+
+        <DescriptionSection info={neuralNet.info} />
 
         <div className="pf-nn-block">
           <h3 className="pf-nn-subhead">The Artificial Neuron</h3>
@@ -808,6 +993,9 @@ function NeuralNetworkArtifact({ onBack }) {
             </p>
           ))}
         </div>
+
+        <ValuePropositionSection info={neuralNet.info} />
+        <ReferencesSection info={neuralNet.info} />
       </div>
     </section>
   );
@@ -955,6 +1143,8 @@ function DataQualityArtifact({ onBack }) {
         ))}
         <p className="pf-artifacts-intro">{dataQuality.intro}</p>
 
+        <DescriptionSection info={dataQuality.info} />
+
         <div className="pf-nn-block">
           <h3 className="pf-nn-subhead">What Makes Data "Good," Anyway?</h3>
           <div className="pf-plain-grid">
@@ -1015,6 +1205,9 @@ function DataQualityArtifact({ onBack }) {
             </p>
           ))}
         </div>
+
+        <ValuePropositionSection info={dataQuality.info} />
+        <ReferencesSection info={dataQuality.info} />
       </div>
     </section>
   );

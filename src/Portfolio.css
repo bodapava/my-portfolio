@@ -119,6 +119,7 @@
 /* ARTIFACTS TAB */
 .pf-artifacts-section{ border-top: none; padding-top: 60px; }
 .pf-artifacts-intro{ max-width: 66ch; color: var(--ink-dim); font-size: 0.92rem; margin-bottom: 40px; }
+.pf-artifacts-tools-note{ max-width: 66ch; color: var(--ink-dim); font-size: 0.78rem; font-style: italic; margin: -28px 0 40px; }
 
 /* ARTIFACT CARDS (list view) */
 .pf-artifact-list{ display:grid; grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); gap: 24px; }
@@ -203,6 +204,8 @@
 .pf-case-card{ border:1px solid var(--sage); background: var(--bg-raised); border-radius:6px; padding:26px 28px; }
 .pf-case-title{ font-family: var(--serif); font-size:1.2rem; font-weight:500; margin: 14px 0 12px; }
 .pf-case-body{ font-size:0.86rem; color: var(--ink-dim); line-height:1.7; }
+.pf-case-source{ margin-top: 12px; font-size: 0.72rem; color: var(--ink-dim); }
+.pf-case-source a{ color: var(--amber); text-decoration: underline; }
 .pf-case-example{ margin-top: 12px; }
 .pf-case-example b{ color: var(--ink); }
 .pf-activation-grid{ grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); }
@@ -214,6 +217,11 @@
 }
 .pf-nn-block{ margin: 50px 0; }
 .pf-nn-subhead{ font-family: var(--serif); font-size: 1.3rem; font-weight: 500; margin: 0 0 14px; }
+
+.pf-references-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px; }
+.pf-references-list li{ font-size:0.85rem; color:var(--ink-dim); line-height:1.6; padding-left:22px; position:relative; }
+.pf-references-list li::before{ content:"—"; position:absolute; left:0; color:var(--amber); }
+.pf-references-list a{ color:var(--amber); text-decoration:underline; word-break:break-word; }
 
 .pf-nn-svg{ width: 100%; height: auto; display:block; }
 .pf-nn-edge{ stroke: var(--line); stroke-width: 1.5; }
