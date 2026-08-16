@@ -466,6 +466,95 @@ const dataQuality = {
   },
 };
 
+const aiNewsletter = {
+  edition: "August 2026 Edition",
+  intro:
+    "AI has been moving really fast this month, and it's not just a feeling. Coding tools now let developers run multiple AI agents at once instead of just one assistant, banks are using AI to fight AI when it comes to fraud, and online stores are getting a lot better at recommending what you actually want to buy. In this newsletter, I am going to talk about what's actually new across three industries — software development, finance, and retail — without getting too technical.",
+  overview:
+    "I picked these three industries because each one shows a different way AI is being used right now. In software development, AI works like a collaborator. In finance, it works more like a guardian, protecting against fraud. And in retail, it acts almost like a personal shopper. Looking at all three together gives a good picture of where AI is heading next.",
+  statsRow: [
+    { value: "8", label: "AI agents Cursor 3 can run in parallel, each on its own branch" },
+    { value: "83%", label: "of finance leaders report fewer false fraud declines from AI" },
+    { value: "300%", label: "revenue lift reported from real-time personalisation in retail" },
+  ],
+  industries: [
+    {
+      emoji: "🧑‍💻",
+      title: "Software Development — From Autocomplete to Autonomous Teams",
+      intro:
+        "AI coding tools aren't just suggesting single lines of code anymore. The newest versions can now run small teams of \"agents\" that plan, write, test, and fix code on their own, without much hand-holding. Anthropic's Claude Code, for example, now runs on the Opus 5 model, and it comes with a built-in security scanner while costing roughly half of what it used to. AWS also rolled out Kiro globally to replace Amazon Q Developer, and Google replaced its Gemini CLI with a new tool called Antigravity.",
+      spotlightTitle: "Spotlight: Cursor 3 — Agents Window",
+      spotlightBody:
+        "A good example of this is Cursor 3, which came out this spring. It has a new feature called the \"Agents Window\" that lets a developer launch up to eight AI agents at once, with each one working on its own separate branch of the codebase. Basically, it lets one person run a small engineering team from a single laptop. It also has a \"Design Mode\" feature that can turn a visual mock-up directly into working code.",
+      impactTitle: "Impact & What's Next",
+      impactBody:
+        "This means small teams can now get done what used to take a lot more engineers. But the trade-off is quality control, since things are moving that fast. That's why automated testing and human code review are becoming a must, not just a nice-to-have. I think \"AI reviewer\" is going to become as normal a role on engineering teams as QA is today.",
+    },
+    {
+      emoji: "🏦",
+      title: "Finance — Fraud Detection Becomes an AI Arms Race",
+      intro:
+        "Fraud detection in finance used to mean flagging suspicious transactions after they already happened. Now it's moving toward blocking them in real time. Q2, which is a banking software provider, recently added two new features called User Activity Monitoring and Restricted Entitlements Mode. Together, these can catch an account takeover while it's happening and instantly limit what the attacker can do, all before a human even reviews the case.",
+      spotlightTitle: "Spotlight: Mastercard Decision Intelligence Pro",
+      spotlightBody:
+        "A good example of this is Mastercard's Decision Intelligence Pro. It scores every transaction in real time using behavioural biometrics, which are basically patterns like how you type or swipe, along with generative AI models. It can also score transactions across any network, not just Mastercard's own.",
+      impactTitle: "Impact & What's Next",
+      impactBody:
+        "According to a survey, 83% of industry leaders say AI has already cut down on false declines and customer churn. That said, global payment fraud losses are still in the tens of millions annually for large institutions. Going forward, I think we'll see fewer wrongly blocked purchases, but your bank will also be quietly tracking a lot more behavioural signals than before. That trade-off is probably worth reading about in your bank's privacy policy.",
+    },
+    {
+      emoji: "🛍️",
+      title: "Retail — The Checkout Page That Knows You",
+      intro:
+        "Retail AI used to be mostly about \"customers who bought this also bought\" suggestions. Now it's moved toward making real-time personalisation decisions in the seconds around checkout. Adobe Commerce recently added a Catalogue Agent, which automatically fills in product pages using a store's existing pricing, inventory, and product-relationship data. This cuts down on a lot of manual merchandising work.",
+      spotlightTitle: "Spotlight: Rokt Brain V4",
+      spotlightBody:
+        "One example worth mentioning is Rokt's Brain V4. It decides in real time exactly what a shopper sees at checkout, whether that's a product recommendation, an add-on offer, or a piece of content. It pulls from customer data, partner data, and live transaction context, then runs it all through machine learning and a real-time auction to pick the single best thing to show that specific shopper at that specific moment.",
+      impactTitle: "Impact & What's Next",
+      impactBody:
+        "From what I've read, strong personalisation is linked to major revenue gains, in some cases as high as 300%. AI-driven demand forecasting is also cutting excess inventory by 20 to 30%. Retailers who are slow to adopt this kind of real-time decision-making risk losing margin to competitors who do.",
+    },
+  ],
+  roundup: [
+    { industry: "Software Development", company: "Cursor", product: "Cursor 3 — Agents Window", does: "Runs up to 8 AI coding agents in parallel, each on its own Git branch" },
+    { industry: "Software Development", company: "Anthropic", product: "Claude Code on Opus 5", does: "Terminal-based coding agent with a built-in security scanner" },
+    { industry: "Finance", company: "Mastercard", product: "Decision Intelligence Pro", does: "Real-time, AI-scored fraud detection using behavioural biometrics" },
+    { industry: "Finance", company: "Q2", product: "User Activity Monitoring / REM", does: "Real-time account takeover detection and response" },
+    { industry: "Retail", company: "Rokt", product: "Brain V4", does: "Chooses the best real-time offer or recommendation at checkout" },
+    { industry: "Retail", company: "Adobe", product: "Commerce Catalogue Agent", does: "Automatically enriches product listings from existing store data" },
+  ],
+  closing:
+    "Three different industries, but one common thread. AI is shifting from being a tool you consult to a system that actually acts on its own, whether that's writing code, blocking fraud, or deciding what you see. And it's doing this more and more in real time, with less human sign-off at each step. That's a real productivity gain, but it also raises the stakes on getting oversight right. That could mean a reviewer checking an AI agent's code, or a customer actually reading the fine print on how their behaviour is being scored. I'll be watching this closely, because next month's list of \"genuinely new\" will probably look just as different.",
+  info: {
+    objective:
+      "To research and summarize genuinely new commercial AI applications released within roughly the last month across three industries — software development, finance, and retail — and explain what they mean for how each industry actually operates, not just what they do technically.",
+    process:
+      "Researched recent product launches and updates in each industry (Cursor 3, Claude Code on Opus 5, AWS Kiro, and Google Antigravity for software development; Q2's fraud tools and Mastercard's Decision Intelligence Pro for finance; Adobe Commerce's Catalogue Agent and Rokt's Brain V4 for retail), picked one company per industry for a deeper spotlight, and framed each around what changed and what it means going forward, before pulling all three together into one leadership takeaway.",
+    uniqueValue:
+      "Written in a personal, first-person voice rather than a press-release tone, with each industry section closing on a plain \"so what does this mean\" takeaway instead of just describing the product.",
+    relevance:
+      "Staying current on real commercial AI deployments, not just theory, is directly relevant to my own move into AI/ML — especially since I work in financial services, and the fraud-detection developments here are the closest to work I could actually be doing.",
+    references: [
+      {
+        text: "Cursor. (2026). Meet the new Cursor (Cursor 3).",
+        url: "https://cursor.com/blog/cursor-3",
+      },
+      {
+        text: "Mastercard. (2026). Decision Intelligence for Fraud and Risk Management.",
+        url: "https://www.mastercard.com/us/en/business/cybersecurity-fraud-prevention/risk-decisioning/decision-intelligence.html",
+      },
+      {
+        text: "PYMNTS.com. (2026). Mastercard Says AI vs AI Will Be Fraud Prevention's Future.",
+        url: "https://www.pymnts.com/fraud-prevention/2026/mastercard-says-ai-vs-ai-will-be-fraud-preventions-future/",
+      },
+      {
+        text: "Practical Ecommerce. (2026). New Ecommerce Tools: August 12, 2026.",
+        url: "https://www.practicalecommerce.com/new-ecommerce-tools-august-12-2026",
+      },
+    ],
+  },
+};
+
 // ---------- 2. COMPONENT ----------
 
 export default function Portfolio() {
@@ -642,6 +731,14 @@ const artifactsMeta = [
     summary:
       "Why the unglamorous work of clean, fair data matters more than any algorithm — with an interactive demo of how messy data wrecks a model.",
   },
+  {
+    id: "newsletter",
+    num: "A5",
+    title: "AI in Motion: This Month in Software, Finance & Retail",
+    tags: ["Industry Research", "Newsletter"],
+    summary:
+      "A newsletter-style roundup of genuinely new commercial AI launches across three industries — what changed this month, and why it actually matters.",
+  },
 ];
 
 function ArtifactsTab() {
@@ -655,6 +752,7 @@ function ArtifactsTab() {
   if (selected === "mlvsdl") return <MlVsDlArtifact onBack={() => setSelected(null)} />;
   if (selected === "neuralnet") return <NeuralNetworkArtifact onBack={() => setSelected(null)} />;
   if (selected === "dataquality") return <DataQualityArtifact onBack={() => setSelected(null)} />;
+  if (selected === "newsletter") return <NewsletterArtifact onBack={() => setSelected(null)} />;
 
   return (
     <section id="artifacts" className="pf-artifacts-section">
@@ -1242,6 +1340,92 @@ function DataQualityDemo() {
         <p className="pf-neuron-result">{messages[tier]}</p>
       </div>
     </div>
+  );
+}
+
+function NewsletterArtifact({ onBack }) {
+  return (
+    <section id="artifacts" className="pf-artifacts-section">
+      <div className="pf-wrap">
+        <BackButton onBack={onBack} />
+        <EntryLabel num="A5" title="AI in Motion" />
+        <p className="pf-artifact-subtitle">
+          {aiNewsletter.edition} · This Month's Biggest Shifts in Software, Finance &amp; Retail
+        </p>
+
+        <p className="pf-artifacts-intro">{aiNewsletter.intro}</p>
+
+        <DescriptionSection info={aiNewsletter.info} />
+
+        <div className="pf-nn-block">
+          <h3 className="pf-nn-subhead">Why These Three Industries</h3>
+          <p className="pf-artifacts-intro">{aiNewsletter.overview}</p>
+
+          <div className="pf-stat-grid">
+            {aiNewsletter.statsRow.map((s) => (
+              <div className="pf-stat-card" key={s.label}>
+                <div className="pf-stat-value">{s.value}</div>
+                <p className="pf-stat-label">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {aiNewsletter.industries.map((ind) => (
+          <div className="pf-nn-block" key={ind.title}>
+            <h3 className="pf-nn-subhead">
+              {ind.emoji} {ind.title}
+            </h3>
+            <p className="pf-artifacts-intro">{ind.intro}</p>
+            <div className="pf-when-grid">
+              <div className="pf-when-card">
+                <div className="pf-when-title">{ind.spotlightTitle}</div>
+                <p className="pf-plain-text">{ind.spotlightBody}</p>
+              </div>
+              <div className="pf-when-card">
+                <div className="pf-when-title">{ind.impactTitle}</div>
+                <p className="pf-plain-text">{ind.impactBody}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+
+        <div className="pf-nn-block">
+          <h3 className="pf-nn-subhead">This Month's Roundup</h3>
+          <div className="pf-table-scroll">
+            <table className="pf-ml-table">
+              <thead>
+                <tr>
+                  <th>Industry</th>
+                  <th>Company</th>
+                  <th>Product</th>
+                  <th>What It Does</th>
+                </tr>
+              </thead>
+              <tbody>
+                {aiNewsletter.roundup.map((r) => (
+                  <tr key={r.product}>
+                    <td className="pf-ml-aspect">{r.industry}</td>
+                    <td>{r.company}</td>
+                    <td>{r.product}</td>
+                    <td>{r.does}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div className="pf-post">
+          <div className="pf-post-date">Closing Thought</div>
+          <h3 className="pf-post-title">The Takeaway</h3>
+          <p className="pf-post-body">{aiNewsletter.closing}</p>
+        </div>
+
+        <ValuePropositionSection info={aiNewsletter.info} />
+        <ReferencesSection info={aiNewsletter.info} />
+      </div>
+    </section>
   );
 }
 
