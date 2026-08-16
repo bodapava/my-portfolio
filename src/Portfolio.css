@@ -89,6 +89,9 @@
 
 /* ABOUT */
 .pf-about{ max-width: 68ch; font-size: 0.95rem; color: var(--ink-dim); }
+.pf-value-prop{ margin-top: 26px; padding-left: 20px; border-left: 2px solid var(--amber); }
+.pf-value-prop .pf-tag-pill{ margin-bottom: 12px; display: inline-block; }
+.pf-value-prop .pf-about{ margin: 0; }
 
 /* LANGUAGES */
 .pf-lang-row{ display:flex; gap: 12px; flex-wrap: wrap; }

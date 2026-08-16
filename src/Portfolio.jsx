@@ -24,6 +24,8 @@ const profile = {
     "Full-stack engineer with 8+ years building secure, reliable web applications for finance and payments companies — now expanding into AI and machine learning.",
   about:
     "I'm a full-stack software engineer with over 8 years of experience building web applications, mainly for finance and payments companies. I work across the whole stack — the parts people see and use, and the systems running behind the scenes — and I care most about building things that are secure, dependable, and easy to use. I'm currently growing my skills in AI and machine learning, and this site doubles as a place to document that journey.",
+  valueProposition:
+    "My value as an AI/ML student is that I bring eight years of production engineering experience in regulated, high-stakes industries — finance and payments — to a field that increasingly needs people who understand both the technology and its real-world consequences. This site is written primarily for hiring managers and technical leaders in regulated industries, people who want to see not just that I understand AI/ML concepts, but that I think about them the way someone accountable for their outcomes would.",
   // BASE_URL adapts automatically whether this site is hosted at the
   // domain root or in a GitHub Pages subfolder (e.g. /my-portfolio/).
   resumeUrl: `${import.meta.env.BASE_URL}Priyanka_Bodapati_Resume.pdf`,
@@ -162,6 +164,8 @@ const timelineInfo = {
     "To visually map 75 years of AI/ML history — the breakthroughs and the two \"winters\" where the field nearly stalled — so viewers can see that progress here has never been a straight line, and draw a takeaway from that pattern.",
   process:
     "Researched key milestones from the 1950 Turing Test through the 2025 GenAI race, classified each as an origin/breakthrough, winter, or boom event, then built an interactive horizontal timeline in React to display them chronologically with a color-coded legend, closing with a personal reflection on what the pattern suggests about today's AI boom.",
+  toolsUsed:
+    "React (functional components, data-driven rendering from a plain JS array), custom CSS for the timeline nodes and connectors — no external charting or animation library.",
   uniqueValue:
     "Rather than a static list of dates, the timeline is built to make a pattern visible — color-coding winters against booms so a viewer can see AI's boom/bust cycle for themselves instead of being told about it.",
   relevance:
@@ -264,6 +268,8 @@ const mlVsDl = {
       "To give a practical, decision-oriented comparison between machine learning and deep learning — not just definitions, but a guide for when to actually choose one over the other on a real project.",
     process:
       "Built a comparison table across six dimensions (how it learns, data needed, hardware, training time, explainability, best-suited data type), paired it with \"when to choose\" checklists for each, and grounded the comparison in two real-world case studies — one classic ML use case and one deep learning use case — before closing with a professional reflection tying the decision to my own work in financial services.",
+    toolsUsed:
+      "React for the comparison layout, a plain HTML table styled with custom CSS for the six-dimension comparison, and data-driven case study cards — no external table or charting library.",
     uniqueValue:
       "Most ML vs. DL explainers stop at definitions. This artifact frames the choice as a practical trade-off — cost, explainability, data availability — rather than \"which is smarter,\" which is closer to how the decision actually gets made on a real team.",
     relevance:
@@ -380,6 +386,8 @@ const neuralNet = {
       "To break down how neural networks actually learn — from a single neuron to a full training loop — into pieces simple enough to follow without oversimplifying the underlying mechanics.",
     process:
       "Structured the explanation as a sequence of building blocks (neuron → activation function → layered network → training loop → network types), and built two interactive elements — a draggable-slider neuron demo and a clickable training-loop stepper — so the concepts could be explored hands-on instead of only read.",
+    toolsUsed:
+      "React hooks (useState) driving the interactive neuron demo and the clickable training-loop stepper, hand-written inline SVG for the neuron and layer diagrams — no diagramming or animation library.",
     uniqueValue:
       "The interactivity is the differentiator — letting someone adjust inputs and watch a neuron \"fire\" or stay quiet turns an abstract equation into something they can experiment with directly, which sticks better than a static diagram.",
     relevance:
@@ -449,6 +457,8 @@ const dataQuality = {
       "To make the case that data quality — not algorithm choice — is usually the real determinant of whether an AI system succeeds or causes harm, and to make that abstract risk tangible.",
     process:
       "Opened with two concrete failure scenarios (biased hiring, missed fraud) to hook the reader, defined the pillars of \"good\" data, built an interactive slider demo showing how model accuracy degrades as messy data increases, catalogued five common data traps, and explained the \"3 V's\" of big data before closing with a leadership-focused takeaway.",
+    toolsUsed:
+      "React hooks (useState) for the interactive messy-data slider, a custom CSS-animated accuracy bar that updates live as the slider moves — no charting library.",
     uniqueValue:
       "The interactive demo turns a normally invisible problem — data quality — into a visible, quantified effect on accuracy in real time, which is more persuasive than describing it in the abstract.",
     relevance:
@@ -530,6 +540,8 @@ const aiNewsletter = {
       "To research and summarize genuinely new commercial AI applications released within roughly the last month across three industries — software development, finance, and retail — and explain what they mean for how each industry actually operates, not just what they do technically.",
     process:
       "Researched recent product launches and updates in each industry (Cursor 3, Claude Code on Opus 5, AWS Kiro, and Google Antigravity for software development; Q2's fraud tools and Mastercard's Decision Intelligence Pro for finance; Adobe Commerce's Catalogue Agent and Rokt's Brain V4 for retail), picked one company per industry for a deeper spotlight, and framed each around what changed and what it means going forward, before pulling all three together into one leadership takeaway.",
+    toolsUsed:
+      "React, data-driven arrays for the industries/stats/roundup content, a plain HTML table for the roundup — no interactive elements, since this artifact is written as a static newsletter rather than an explainer.",
     uniqueValue:
       "Written in a personal, first-person voice rather than a press-release tone, with each industry section closing on a plain \"so what does this mean\" takeaway instead of just describing the product.",
     relevance:
@@ -645,6 +657,10 @@ function HomeTab() {
         <div className="pf-wrap">
           <EntryLabel num="00" title="About" />
           <p className="pf-about">{profile.about}</p>
+          <div className="pf-value-prop">
+            <span className="pf-tag-pill">Value Proposition &amp; Audience</span>
+            <p className="pf-about">{profile.valueProposition}</p>
+          </div>
         </div>
       </section>
 
@@ -815,6 +831,10 @@ function DescriptionSection({ info }) {
         <div className="pf-case-card">
           <span className="pf-tag-pill">Process</span>
           <p className="pf-case-body">{info.process}</p>
+        </div>
+        <div className="pf-case-card">
+          <span className="pf-tag-pill">Tools &amp; Tech Used</span>
+          <p className="pf-case-body">{info.toolsUsed}</p>
         </div>
       </div>
     </div>
